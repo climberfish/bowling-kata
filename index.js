@@ -1,15 +1,19 @@
 function frameScore(frame, nextFrame, nextNextFrame) {
   const current = rawPoints(frame);
   if (isStrike(frame)) {
-    if (isStrike(nextFrame)) {
-      return 10 + 10 + nextNextFrame[0];
-    }
-    return 10 + rawPoints(nextFrame);
+    return strikeScore(nextFrame, nextNextFrame);
   }
   if (isSpare(frame)) {
     return current + nextFrame[0];
   }
   return current;
+}
+
+function strikeScore(nextFrame, nextNextFrame) {
+  if (isStrike(nextFrame)) {
+    return 10 + 10 + nextNextFrame[0];
+  }
+  return 10 + rawPoints(nextFrame);
 }
 
 const isStrike = (frame) => frame[0] === 10;
