@@ -146,3 +146,21 @@ test("Jogo perfeito", () => {
   const resultado = gameScore(jogo);
   expect(resultado).toBe(esperado);
 });
+
+test("Jogo aleatório", () => {
+  const jogo = [
+    [5, 4],
+    [8, 2],
+    [10, 0],
+    [10, 0],
+    [1, 0],
+    [9, 1],
+    [0, 10],
+    [10, 0],
+    [6, 4],
+    [7, 3, 10],
+  ];
+  const esperado = 149;
+  const resultado = gameScore(jogo);
+  expect(resultado).toBe(esperado);
+});
