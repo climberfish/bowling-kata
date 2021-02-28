@@ -6,3 +6,10 @@ test("Frame zerado", () => {
   const resultado = frameScore(frame);
   expect(resultado).toBe(esperado);
 });
+
+test("Frame normal", () => {
+  const frame = [7, 2];
+  const esperado = 9;
+  const resultado = frameScore(frame);
+  expect(resultado).toBe(esperado);
+});
