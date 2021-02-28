@@ -10,12 +10,12 @@ class Frame {
     return [this.firstBall, this.secondBall, this.thirdBall];
   }
 
-  static fromArray(frame) {
-    return new Frame(null, frame[0], frame[1], frame[2]);
+  static fromArray(frame, nextFrame) {
+    return new Frame(nextFrame, frame[0], frame[1], frame[2]);
   }
 
   score() {
-    return frameScore(this.toArray());
+    return frameScore(this.toArray(), this.next && this.next.toArray());
   }
 }
 

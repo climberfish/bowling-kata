@@ -8,17 +8,17 @@ test("Frame zerado", () => {
 });
 
 test("Frame normal", () => {
-  const frame = [7, 2];
+  const frame = Frame.fromArray([7, 2]);
   const esperado = 9;
-  const resultado = frameScore(frame);
+  const resultado = frame.score();
   expect(resultado).toBe(esperado);
 });
 
 test("Frame com spare", () => {
-  const frame = [6, 4];
-  const proximoFrame = [5, 3];
+  const proximoFrame = Frame.fromArray([5, 3]);
+  const frame = Frame.fromArray([6, 4], proximoFrame);
   const esperado = 10 + 5;
-  const resultado = frameScore(frame, proximoFrame);
+  const resultado = frame.score();
   expect(resultado).toBe(esperado);
 });
 
