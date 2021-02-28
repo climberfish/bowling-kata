@@ -56,3 +56,21 @@ test("Jogo simples", () => {
   const resultado = gameScore(jogo);
   expect(resultado).toBe(esperado);
 });
+
+test("Jogo com spare", () => {
+  const jogo = [
+    [1, 9],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+  ];
+  const esperado = 10 + 1 + 3 * 9;
+  const resultado = gameScore(jogo);
+  expect(resultado).toBe(esperado);
+});
