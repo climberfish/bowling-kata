@@ -18,12 +18,17 @@ class Game {
     for (const i of Array(8).keys()) {
       scores += this.frames[i].score();
     }
-    scores += penultFrameScore(
-      this.frames[8].toArray(),
-      this.frames[9].toArray()
-    );
-    scores += lastFrameScore(this.frames[9].toArray());
+    scores += this.__penultFrameScore();
+    scores += this.__lastFrameScore();
     return scores;
+  }
+
+  __penultFrameScore() {
+    return penultFrameScore(this.frames[8].toArray(), this.frames[9].toArray());
+  }
+
+  __lastFrameScore() {
+    return lastFrameScore(this.frames[9].toArray());
   }
 }
 
