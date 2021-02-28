@@ -18,11 +18,9 @@ class Game {
   }
 
   score() {
-    let scores = 0;
-    for (const i of Array(10).keys()) {
-      scores += this.frames[i].score();
-    }
-    return scores;
+    const sumOf = (array) => array.reduce((total, elem) => total + elem);
+    const scores = this.frames.map((frame) => frame.score());
+    return sumOf(scores);
   }
 }
 
