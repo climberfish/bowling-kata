@@ -1,4 +1,4 @@
-const { Frame, frameScore, isSpare, isStrike } = require("./frameScore");
+const { Frame } = require("./frameScore");
 
 class Game {
   constructor(frames) {
@@ -24,30 +24,27 @@ class Game {
   }
 
   __penultFrameScore() {
-    return penultFrameScore(this.frames[8].toArray(), this.frames[9].toArray());
+    const [penultFrame, lastFrame] = this.frames.slice(8);
+
+    if (penultFrame.isStrike() && lastFrame.isStrike()) {
+      return 10 + 10 + lastFrame.firstBall;
+    }
+    return penultFrame.score();
   }
 
   __lastFrameScore() {
-    return lastFrameScore(this.frames[9].toArray());
+    const lastFrame = this.frames[9];
+
+    if (lastFrame.isStrike())
+      return 10 + lastFrame.secondBall + lastFrame.thirdBall;
+    if (lastFrame.isSpare()) return 10 + lastFrame.thirdBall;
+
+    return lastFrame.score();
   }
 }
 
 function gameScore(frames) {
   return Game.fromArrays(frames).score();
-}
-
-const penultFrameScore = (penultFrame, lastFrame) => {
-  if (isStrike(penultFrame) && isStrike(lastFrame)) {
-    return 10 + 10 + lastFrame[1];
-  }
-  return frameScore(penultFrame, lastFrame);
-};
-
-function lastFrameScore(lastFrame) {
-  if (isStrike(lastFrame)) return 10 + lastFrame[1] + lastFrame[2];
-  if (isSpare(lastFrame)) return 10 + lastFrame[2];
-
-  return frameScore(lastFrame);
 }
 
 module.exports = gameScore;
