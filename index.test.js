@@ -21,3 +21,11 @@ test("Frame com spare", () => {
   const resultado = frameScore(frame, proximoFrame);
   expect(resultado).toBe(esperado);
 });
+
+test("Frame com strike", () => {
+  const frame = [10, 0];
+  const proximoFrame = [1, 2];
+  const esperado = 10 + 1 + 2;
+  const resultado = frameScore(frame, proximoFrame);
+  expect(resultado).toBe(esperado);
+});
