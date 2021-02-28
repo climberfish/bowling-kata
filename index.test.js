@@ -1,4 +1,4 @@
-const { frameScore } = require(".");
+const { frameScore, gameScore } = require(".");
 
 test("Frame zerado", () => {
   const frame = [0, 0];
@@ -36,5 +36,23 @@ test("Frame com strike duplo", () => {
   const maisUmFrame = [2, 2];
   const esperado = 10 + 10 + 2;
   const resultado = frameScore(frame, proximoFrame, maisUmFrame);
+  expect(resultado).toBe(esperado);
+});
+
+test("Jogo simples", () => {
+  const jogo = [
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+  ];
+  const esperado = 3 * 10;
+  const resultado = gameScore(jogo);
   expect(resultado).toBe(esperado);
 });
