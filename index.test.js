@@ -1,4 +1,4 @@
-const { frameScore, gameScore } = require(".");
+const { frameScore, gameScore } = require("./scores");
 
 test("Frame zerado", () => {
   const frame = [0, 0];
