@@ -12,17 +12,23 @@ class Game {
     }
     return new Game(frames);
   }
+
+  score() {
+    let scores = 0;
+    for (const i of Array(8).keys()) {
+      scores += this.frames[i].score();
+    }
+    scores += penultFrameScore(
+      this.frames[8].toArray(),
+      this.frames[9].toArray()
+    );
+    scores += lastFrameScore(this.frames[9].toArray());
+    return scores;
+  }
 }
 
 function gameScore(frames) {
-  let scores = 0;
-  const game = Game.fromArrays(frames);
-  for (const i of Array(8).keys()) {
-    scores += game.frames[i].score();
-  }
-  scores += penultFrameScore(frames[8], frames[9]);
-  scores += lastFrameScore(frames[9]);
-  return scores;
+  return Game.fromArrays(frames).score();
 }
 
 const penultFrameScore = (penultFrame, lastFrame) => {
