@@ -15,11 +15,33 @@ class Frame {
   }
 
   score() {
-    return frameScore(
-      this.toArray(),
-      this.next && this.next.toArray(),
-      this.next && this.next.next && this.next.next.toArray()
+    const current = this.rawPoints();
+    if (this.isStrike()) {
+      return this.strikeScore();
+    }
+    if (this.isSpare()) {
+      return current + this.next.firstBall;
+    }
+    return current;
+  }
+
+  rawPoints() {
+    return rawPoints(this.toArray());
+  }
+
+  strikeScore() {
+    return strikeScore(
+      this.next.toArray(),
+      this.next.next && this.next.next.toArray()
     );
+  }
+
+  isStrike() {
+    return isStrike(this.toArray());
+  }
+
+  isSpare() {
+    return isSpare(this.toArray());
   }
 }
 
