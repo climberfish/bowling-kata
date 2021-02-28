@@ -23,19 +23,19 @@ test("Frame com spare", () => {
 });
 
 test("Frame com strike", () => {
-  const frame = [10, 0];
-  const proximoFrame = [1, 2];
+  const proximoFrame = Frame.fromArray([1, 2]);
+  const frame = Frame.fromArray([10, 0], proximoFrame);
   const esperado = 10 + 1 + 2;
-  const resultado = frameScore(frame, proximoFrame);
+  const resultado = frame.score();
   expect(resultado).toBe(esperado);
 });
 
 test("Frame com strike duplo", () => {
-  const frame = [10, 0];
-  const proximoFrame = [10, 0];
-  const maisUmFrame = [2, 2];
+  const maisUmFrame = Frame.fromArray([2, 2]);
+  const proximoFrame = Frame.fromArray([10, 0], maisUmFrame);
+  const frame = Frame.fromArray([10, 0], proximoFrame);
   const esperado = 10 + 10 + 2;
-  const resultado = frameScore(frame, proximoFrame, maisUmFrame);
+  const resultado = frame.score();
   expect(resultado).toBe(esperado);
 });
 

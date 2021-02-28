@@ -15,7 +15,11 @@ class Frame {
   }
 
   score() {
-    return frameScore(this.toArray(), this.next && this.next.toArray());
+    return frameScore(
+      this.toArray(),
+      this.next && this.next.toArray(),
+      this.next && this.next.next && this.next.next.toArray()
+    );
   }
 }
 
