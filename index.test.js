@@ -128,3 +128,21 @@ test("Jogo quase perfeito", () => {
   const resultado = gameScore(jogo);
   expect(resultado).toBe(esperado);
 });
+
+test("Jogo perfeito", () => {
+  const jogo = [
+    [10, 0],
+    [10, 0],
+    [10, 0],
+    [10, 0],
+    [10, 0],
+    [10, 0],
+    [10, 0],
+    [10, 0],
+    [10, 0],
+    [10, 10, 10],
+  ];
+  const esperado = 30 * 10;
+  const resultado = gameScore(jogo);
+  expect(resultado).toBe(esperado);
+});
