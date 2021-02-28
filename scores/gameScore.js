@@ -3,7 +3,7 @@ const frameScore = require("./frameScore");
 function gameScore(frames) {
   let scores = 0;
   for (const i of Array(10).keys()) {
-    scores += frameScore(frames[i], frames[i + 1]);
+    scores += frameScore(frames[i], frames[i + 1], frames[i + 2]);
   }
   return scores;
 }

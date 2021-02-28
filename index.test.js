@@ -74,3 +74,39 @@ test("Jogo com spare", () => {
   const resultado = gameScore(jogo);
   expect(resultado).toBe(esperado);
 });
+
+test("Jogo com strike simples", () => {
+  const jogo = [
+    [10, 0],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+  ];
+  const esperado = 10 + 1 + 2 + 3 * 9;
+  const resultado = gameScore(jogo);
+  expect(resultado).toBe(esperado);
+});
+
+test("Jogo com strike duplo", () => {
+  const jogo = [
+    [10, 0],
+    [10, 0],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+  ];
+  const esperado = 10 + 10 + 1 + (10 + 1 + 2) + 3 * 8;
+  const resultado = gameScore(jogo);
+  expect(resultado).toBe(esperado);
+});
