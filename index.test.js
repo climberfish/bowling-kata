@@ -1,9 +1,9 @@
-const { frameScore, gameScore } = require("./scores");
+const { Frame, frameScore, gameScore } = require("./scores");
 
 test("Frame zerado", () => {
-  const frame = [0, 0];
+  const frame = Frame.fromArray([0, 0]);
   const esperado = 0;
-  const resultado = frameScore(frame);
+  const resultado = frame.score();
   expect(resultado).toBe(esperado);
 });
 

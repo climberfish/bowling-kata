@@ -1,4 +1,4 @@
-const { frameScore } = require("./frameScore");
+const { Frame, frameScore } = require("./frameScore");
 const gameScore = require("./gameScore");
 
-module.exports = { frameScore, gameScore };
+module.exports = { Frame, frameScore, gameScore };
