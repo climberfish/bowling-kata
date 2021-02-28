@@ -26,22 +26,22 @@ class Frame {
   }
 
   rawPoints() {
-    return rawPoints(this.toArray());
+    return this.firstBall + this.secondBall;
   }
 
   strikeScore() {
-    return strikeScore(
-      this.next.toArray(),
-      this.next.next && this.next.next.toArray()
-    );
+    if (this.next.isStrike()) {
+      return 10 + 10 + this.next.next.firstBall;
+    }
+    return 10 + this.next.rawPoints();
   }
 
   isStrike() {
-    return isStrike(this.toArray());
+    return this.firstBall === 10;
   }
 
   isSpare() {
-    return isSpare(this.toArray());
+    return !this.isStrike() && this.firstBall + this.secondBall === 10;
   }
 }
 
