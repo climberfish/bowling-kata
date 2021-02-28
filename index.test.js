@@ -110,3 +110,21 @@ test("Jogo com strike duplo", () => {
   const resultado = gameScore(jogo);
   expect(resultado).toBe(esperado);
 });
+
+test("Jogo quase perfeito", () => {
+  const jogo = [
+    [10, 0],
+    [10, 0],
+    [10, 0],
+    [10, 0],
+    [10, 0],
+    [10, 0],
+    [10, 0],
+    [10, 0],
+    [10, 0],
+    [7, 3, 9],
+  ];
+  const esperado = 30 * 7 + (10 + 10 + 7) + (10 + 7 + 3) + (10 + 9);
+  const resultado = gameScore(jogo);
+  expect(resultado).toBe(esperado);
+});
