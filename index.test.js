@@ -13,3 +13,11 @@ test("Frame normal", () => {
   const resultado = frameScore(frame);
   expect(resultado).toBe(esperado);
 });
+
+test("Frame com spare", () => {
+  const frame = [6, 4];
+  const proximoFrame = [5, 3];
+  const esperado = 10 + 5;
+  const resultado = frameScore(frame, proximoFrame);
+  expect(resultado).toBe(esperado);
+});
