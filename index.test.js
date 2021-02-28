@@ -1,4 +1,4 @@
-const { Frame, Game } = require("./scores");
+const { Frame, Game } = require("./bowling");
 
 test("Frame zerado", () => {
   const frame = Frame.fromArray([0, 0]);

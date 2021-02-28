@@ -1,4 +1,4 @@
-const Frame = require("./frameScore");
+const Frame = require("./frame");
 
 class Game {
   constructor(frames) {
