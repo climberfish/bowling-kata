@@ -15,25 +15,14 @@ class Frame {
   }
 
   score() {
-    const current = this.rawPoints();
+    const current = this.__rawPoints();
     if (this.isStrike()) {
-      return this.strikeScore();
+      return this.__strikeScore();
     }
     if (this.isSpare()) {
       return current + this.next.firstBall;
     }
     return current;
-  }
-
-  rawPoints() {
-    return this.firstBall + this.secondBall;
-  }
-
-  strikeScore() {
-    if (this.next.isStrike()) {
-      return 10 + 10 + this.next.next.firstBall;
-    }
-    return 10 + this.next.rawPoints();
   }
 
   isStrike() {
@@ -42,6 +31,17 @@ class Frame {
 
   isSpare() {
     return !this.isStrike() && this.firstBall + this.secondBall === 10;
+  }
+
+  __rawPoints() {
+    return this.firstBall + this.secondBall;
+  }
+
+  __strikeScore() {
+    if (this.next.isStrike()) {
+      return 10 + 10 + this.next.next.firstBall;
+    }
+    return 10 + this.next.__rawPoints();
   }
 }
 
