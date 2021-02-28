@@ -1,7 +1,7 @@
 function frameScore(frame, nextFrame) {
   const current = rawPoints(frame);
-  if (frame[0] === 10) {
-    return 10 + nextFrame[0] + nextFrame[1];
+  if (isStrike(frame)) {
+    return 10 + rawPoints(nextFrame);
   }
   if (isSpare(frame)) {
     return current + nextFrame[0];
@@ -9,6 +9,7 @@ function frameScore(frame, nextFrame) {
   return current;
 }
 
+const isStrike = (frame) => frame[0] === 10;
 const isSpare = (frame) => rawPoints(frame) === 10;
 const rawPoints = (frame) => frame[0] + frame[1];
 
