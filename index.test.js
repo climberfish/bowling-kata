@@ -29,3 +29,12 @@ test("Frame com strike", () => {
   const resultado = frameScore(frame, proximoFrame);
   expect(resultado).toBe(esperado);
 });
+
+test("Frame com strike duplo", () => {
+  const frame = [10, 0];
+  const proximoFrame = [10, 0];
+  const maisUmFrame = [2, 2];
+  const esperado = 10 + 10 + 2;
+  const resultado = frameScore(frame, proximoFrame, maisUmFrame);
+  expect(resultado).toBe(esperado);
+});
