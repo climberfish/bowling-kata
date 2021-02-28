@@ -43,8 +43,4 @@ class Game {
   }
 }
 
-function gameScore(frames) {
-  return Game.fromArrays(frames).score();
-}
-
-module.exports = gameScore;
+module.exports = Game;

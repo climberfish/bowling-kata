@@ -1,4 +1,4 @@
-const { Frame, frameScore, gameScore } = require("./scores");
+const { Frame, Game } = require("./scores");
 
 test("Frame zerado", () => {
   const frame = Frame.fromArray([0, 0]);
@@ -40,7 +40,7 @@ test("Frame com strike duplo", () => {
 });
 
 test("Jogo simples", () => {
-  const jogo = [
+  const jogo = Game.fromArrays([
     [1, 2],
     [1, 2],
     [1, 2],
@@ -51,14 +51,14 @@ test("Jogo simples", () => {
     [1, 2],
     [1, 2],
     [1, 2],
-  ];
+  ]);
   const esperado = 3 * 10;
-  const resultado = gameScore(jogo);
+  const resultado = jogo.score();
   expect(resultado).toBe(esperado);
 });
 
 test("Jogo com spare", () => {
-  const jogo = [
+  const jogo = Game.fromArrays([
     [1, 9],
     [1, 2],
     [1, 2],
@@ -69,14 +69,14 @@ test("Jogo com spare", () => {
     [1, 2],
     [1, 2],
     [1, 2],
-  ];
+  ]);
   const esperado = 10 + 1 + 3 * 9;
-  const resultado = gameScore(jogo);
+  const resultado = jogo.score();
   expect(resultado).toBe(esperado);
 });
 
 test("Jogo com strike simples", () => {
-  const jogo = [
+  const jogo = Game.fromArrays([
     [10, 0],
     [1, 2],
     [1, 2],
@@ -87,14 +87,14 @@ test("Jogo com strike simples", () => {
     [1, 2],
     [1, 2],
     [1, 2],
-  ];
+  ]);
   const esperado = 10 + 1 + 2 + 3 * 9;
-  const resultado = gameScore(jogo);
+  const resultado = jogo.score();
   expect(resultado).toBe(esperado);
 });
 
 test("Jogo com strike duplo", () => {
-  const jogo = [
+  const jogo = Game.fromArrays([
     [10, 0],
     [10, 0],
     [1, 2],
@@ -105,14 +105,14 @@ test("Jogo com strike duplo", () => {
     [1, 2],
     [1, 2],
     [1, 2],
-  ];
+  ]);
   const esperado = 10 + 10 + 1 + (10 + 1 + 2) + 3 * 8;
-  const resultado = gameScore(jogo);
+  const resultado = jogo.score();
   expect(resultado).toBe(esperado);
 });
 
 test("Jogo quase perfeito", () => {
-  const jogo = [
+  const jogo = Game.fromArrays([
     [10, 0],
     [10, 0],
     [10, 0],
@@ -123,14 +123,14 @@ test("Jogo quase perfeito", () => {
     [10, 0],
     [10, 0],
     [7, 3, 9],
-  ];
+  ]);
   const esperado = 30 * 7 + (10 + 10 + 7) + (10 + 7 + 3) + (10 + 9);
-  const resultado = gameScore(jogo);
+  const resultado = jogo.score();
   expect(resultado).toBe(esperado);
 });
 
 test("Jogo perfeito", () => {
-  const jogo = [
+  const jogo = Game.fromArrays([
     [10, 0],
     [10, 0],
     [10, 0],
@@ -141,14 +141,14 @@ test("Jogo perfeito", () => {
     [10, 0],
     [10, 0],
     [10, 10, 10],
-  ];
+  ]);
   const esperado = 30 * 10;
-  const resultado = gameScore(jogo);
+  const resultado = jogo.score();
   expect(resultado).toBe(esperado);
 });
 
 test("Jogo aleatório", () => {
-  const jogo = [
+  const jogo = Game.fromArrays([
     [5, 4],
     [8, 2],
     [10, 0],
@@ -159,8 +159,8 @@ test("Jogo aleatório", () => {
     [10, 0],
     [6, 4],
     [7, 3, 10],
-  ];
+  ]);
   const esperado = 149;
-  const resultado = gameScore(jogo);
+  const resultado = jogo.score();
   expect(resultado).toBe(esperado);
 });
